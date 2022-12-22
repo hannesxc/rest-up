@@ -9,10 +9,15 @@
     display: flex;
     align-items: center;
     width: 100%;
+    justify-content: center;
 }
 
 .childBox {
     margin: 40px 20px 20px 20px;
+}
+
+.icon:hover {
+    opacity: 0.6;
 }
 
 .rating {
@@ -63,4 +68,10 @@ span {
     height: 12px;
     border-radius: 50%;
     background-color: lightcoral;
+}
+
+.pages {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
 }
