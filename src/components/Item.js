@@ -8,23 +8,22 @@ import Map from './Map';
 
 function Item({ restaurant }) {
   return (
-    <Card className='main'>
+    <Card sx={{ backgroundColor: 'rgba(255,255,255,0.6)' }} className='main'>
         <div className='map'>
-            <Map area={{lat: restaurant.lat, long: restaurant.long}} />
+            <Map area={{lat: restaurant.Geocode_Latitude, long: restaurant.Geocode_Longitude}} />
         </div>
         <br />
         <Divider variant='middle' sx={{ width: "80%" }}/>
-        <CardContent sx={{ width: "80%", textAlign: "left" }}>
-            <div className='rating'>
-                <Typography gutterBottom variant="h5" component="div">
-                    {restaurant.BusinessName}
-                </Typography>
-                <Rating name='read-only' value={restaurant.RatingValue} readOnly />
-            </div>
-            <Typography variant="body2" color="text.secondary">
+        <CardContent sx={{ width: "80%", padding: '10px 0 0', textAlign: "left" }}>
+            <Typography gutterBottom variant="h5" component="div" sx={{ fontFamily: 'inherit' }} >
+                {restaurant.BusinessName}
+            </Typography>
+            <Typography variant="body2" color="text.secondary" sx={{ fontFamily: 'inherit' }}>
                 {restaurant.AddressLine2}, {restaurant.AddressLine3}
                 <br />
-                Code: {restaurant.Postcode}
+                Code: {restaurant.PostCode}
+                <br />
+                <Rating sx={{ display: 'flex' }} className='rating' name='read-only' value={parseInt(restaurant.RatingValue, 10)} readOnly />
             </Typography>
         </CardContent>
     </Card>

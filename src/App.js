@@ -10,141 +10,11 @@ import SearchIcon from '@mui/icons-material/Search';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import Pagination from '@mui/material/Pagination';
+import Footer from './components/Footer';
 
 function App() {
 
-  const [ data, setData ] = useState([
-    {
-      _id: 43826,
-      BusinessName: "ABC",
-      AddressLine2: "LOL",
-      AddressLine3: "OKK",
-      lat: 65,
-      long: 32,
-      Postcode: 7589,
-      RatingValue: 3
-    },
-    {
-      _id: 43827,
-      BusinessName: "ABC2",
-      AddressLine2: "LOL1",
-      AddressLine3: "OKK",
-      lat: 15,
-      long: 42,
-      Postcode: 78687,
-      RatingValue: 2
-    },
-    {
-      _id: 43432829,
-      BusinessName: "ABC3",
-      AddressLine2: "LOL2",
-      AddressLine3: "OKK",
-      lat: 45,
-      long: 22,
-      Postcode: 67587,
-      RatingValue: 5
-    },
-    {
-      _id: 4123828,
-      BusinessName: "ABC",
-      AddressLine2: "LOL",
-      AddressLine3: "OKK",
-      lat: 65,
-      long: 32,
-      Postcode: 53242,
-      RatingValue: 1
-    },
-    {
-      _id: 43831228,
-      BusinessName: "ABC",
-      AddressLine2: "LOL",
-      AddressLine3: "OKK",
-      lat: 65,
-      long: 32,
-      Postcode: 53242,
-      RatingValue: 1
-    },
-    {
-      _id: 43823428,
-      BusinessName: "ABC",
-      AddressLine2: "LOL",
-      AddressLine3: "OKK",
-      lat: 65,
-      long: 32,
-      Postcode: 53242,
-      RatingValue: 1
-    },
-    {
-      _id: 4385628,
-      BusinessName: "ABC",
-      AddressLine2: "LOL",
-      AddressLine3: "OKK",
-      lat: 65,
-      long: 32,
-      Postcode: 53242,
-      RatingValue: 1
-    },
-    {
-      _id: 44323828,
-      BusinessName: "ABC",
-      AddressLine2: "LOL",
-      AddressLine3: "OKK",
-      lat: 65,
-      long: 32,
-      Postcode: 53242,
-      RatingValue: 1
-    },
-    {
-      _id: 4382128,
-      BusinessName: "ABC",
-      AddressLine2: "LOL",
-      AddressLine3: "OKK",
-      lat: 65,
-      long: 32,
-      Postcode: 53242,
-      RatingValue: 1
-    },
-    {
-      _id: 438413228,
-      BusinessName: "ABC",
-      AddressLine2: "LOL",
-      AddressLine3: "OKK",
-      lat: 65,
-      long: 32,
-      Postcode: 53242,
-      RatingValue: 1
-    },
-    {
-      _id: 443228,
-      BusinessName: "ABC",
-      AddressLine2: "LOL",
-      AddressLine3: "OKK",
-      lat: 65,
-      long: 32,
-      Postcode: 53242,
-      RatingValue: 1
-    },
-    {
-      _id: 4332828,
-      BusinessName: "ABC",
-      AddressLine2: "LOL",
-      AddressLine3: "OKK",
-      lat: 65,
-      long: 32,
-      Postcode: 53242,
-      RatingValue: 1
-    },
-    {
-      _id: 43828,
-      BusinessName: "ABC",
-      AddressLine2: "LOL",
-      AddressLine3: "OKK",
-      lat: 65,
-      long: 32,
-      Postcode: 53242,
-      RatingValue: 1
-    }
-  ])
+  const [ data, setData ] = useState([])
   const [ city, setCity ] = useState('')
   const [ open, setOpen ] = useState(false)
   const [ updatedCity, setUpdatedCity ] = useState('')
@@ -152,7 +22,7 @@ function App() {
   const [ limit, setLimit ] = useState(100)
   const [ page, setPage ] = useState(1)
   const resultsPerPage = 10
-  const [ pages, setPages ] = useState(Math.ceil(data.length / resultsPerPage))
+  const [ pages, setPages ] = useState(1)
   const options = {
     method: 'GET',
     url: `https://wyre-data.p.rapidapi.com/restaurants/town/${city}?limitQuery=${limit}`,
@@ -164,9 +34,10 @@ function App() {
   
   useEffect(() =>  {
     axios.request(options).then( (res) => {
+      console.log(open)
       setData(res.data)
       setOpen(false)
-      setPages(Math.ceil(data.length / resultsPerPage))
+      setPages(Math.ceil(res.data.length / resultsPerPage))
     }).catch( (err) => {
       console.log(err)
       setOpen(false)
@@ -200,7 +71,7 @@ function App() {
       <div className='main childBox'>
         <div className='parentBox'>
           <div className='inputBox'>
-            <TextField className='inputField' id='outlined-name' label='Location' type='text' placeholder='City / Town' variant='standard' value={city} onChange={(e) => setCity(e.target.value)} onKeyUp={(e) => {
+            <TextField className='inputField' id='outlined-name' label='Location' type='text' placeholder='City / Town (in UK)' variant='standard' value={city} onChange={(e) => setCity(e.target.value)} onKeyUp={(e) => {
               if (e.key === 'Enter') {
                 onSearchHandler(e)
               }
@@ -233,6 +104,7 @@ function App() {
           <h2>No restaurants found. Please double-check city/town name.</h2>
         </div> }
       </div>
+      <Footer />
     </>
   );
 }

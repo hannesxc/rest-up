@@ -2,6 +2,8 @@
 
 Rest-Up is an online web application where people can find nightclubs, bars, restaurants and so on, in their vicinity / city. This only works in the United Kingdom, so only UK cities / towns are accepted. Results are limited to 300 in order to stay under the API quota.  
   
+P.S. Inaccurate results, if any, aren't my fault. I'm just displaying what the API fetches.  
+  
 This project was bootstrapped with create-react-app, and uses wyre API to fetch restaurants, google maps API to show their co-ords on the map, and material-ui for the general templates/layouts/icons.  
   
 ## Running it on your machine 
