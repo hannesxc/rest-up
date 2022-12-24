@@ -35,7 +35,6 @@ function App() {
   
   useEffect(() =>  {
     axios.request(options).then( (res) => {
-      console.log(open)
       setData(res.data)
       setOpen(false)
       setPages(Math.ceil(res.data.length / resultsPerPage))
@@ -54,11 +53,9 @@ function App() {
     } else {
       alert("Limit only accepts numeric, upto 300 values.")
     }
-    console.log(options.url)
   }
 
   const handlePageChange = (event, currentPage) => {
-    console.log(currentPage)
     setPage(parseInt(currentPage, 10))
   }
 

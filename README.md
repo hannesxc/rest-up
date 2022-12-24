@@ -12,4 +12,4 @@ Fork it and clone the repo to your local machine. Make sure you have npm install
 > `npm install` to install dependencies  
 > `npm start` to deploy on localhost  
   
-Create a .env.local file inside base directory, and throw in your wyre API key and google maps JS api key inside `REACT_APP_API_KEY` and `REACT_API_MAPS_API_KEY` respectively to actually make the app work. Else put dummy data into the data variable and you could preview its basic features.  
+Create a .env.local file inside base directory, and throw in your wyre (rapidapi) API key and google maps JS api key inside `REACT_APP_WYRE_API_KEY` and `REACT_API_MAPS_API_KEY` respectively to actually make the app work. Else put dummy data into the data variable and you could preview its basic features. Once done, re-launch the app with `npm start` for env variables to take effect, and you should be good to go.  
