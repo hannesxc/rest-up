@@ -4,6 +4,8 @@ import GoogleMapReact from 'google-map-react';
 const Pointer = () => <div className='pointer'></div>;
 
 function Map({ area }){
+
+  const mapsAPI = process.env.REACT_APP_MAPS_API_KEY
   const coords = {
     center: {
       lat: area.lat,
@@ -13,7 +15,7 @@ function Map({ area }){
   }
 
   return (
-    <GoogleMapReact bootstrapURLKeys={{ key: process.env.REACT_APP_MAPS_API_KEY }} defaultCenter={coords.center} defaultZoom={coords.zoom}>
+    <GoogleMapReact bootstrapURLKeys={{ key: mapsAPI }} defaultCenter={coords.center} defaultZoom={coords.zoom}>
         <Pointer lat={area.lat} lng={area.long} />
     </GoogleMapReact>
   );

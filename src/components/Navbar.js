@@ -4,7 +4,7 @@ import restUp from '../assets/restUp.png'
 function Navbar() {
   return (
     <div className='parentBox header'>
-      <img src={restUp} alt='header'/>
+      <a href='/'><img src={restUp} alt='header'/></a>
     </div>
   );
 }

@@ -14,6 +14,7 @@ import Footer from './components/Footer';
 
 function App() {
 
+  const wyreAPI = process.env.REACT_APP_WYRE_API_KEY
   const [ data, setData ] = useState([])
   const [ city, setCity ] = useState('')
   const [ open, setOpen ] = useState(false)
@@ -27,7 +28,7 @@ function App() {
     method: 'GET',
     url: `https://wyre-data.p.rapidapi.com/restaurants/town/${city}?limitQuery=${limit}`,
     headers: {
-      'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
+      'X-RapidAPI-Key': wyreAPI,
       'X-RapidAPI-Host': 'wyre-data.p.rapidapi.com'
     }
   }
